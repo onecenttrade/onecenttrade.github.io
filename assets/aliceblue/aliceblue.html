@@ -1,0 +1,58 @@
+  
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Unkoti</title>
+  <!-- <script src="https://bootstrapcreative.com/wp-bc/wp-content/themes/wp-bootstrap/codepen/bootstrapcreative.js?v=1"></script> -->
+  
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css'>
+
+  
+  
+</head>
+
+<body>
+
+  <div class="jumbotron text-xs-center" style="margin-top: 10%;margin-left: 20%; margin-right: 20%;">
+  <h1 class="display-5">Unkoti welcomes you</h1>
+  <p class="lead"><strong>You are connecting your AliceBlue account witn Unkoti</strong></p>
+  <hr>
+  <p>
+    Happy trading! <a href="">Best wishes </a>
+  </p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" style="color: white;" onclick="getRequestToken()" role="button">Confirm</a>
+  </p>
+</div>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js'></script>
+
+<script>
+   
+  function getRequestToken() { 
+      const queryString = window.location.search;
+    //https://unkoti.com/trade/assets/upstox/upstox.html?code=Zb52i7ttE46fOlNuwzk059WriXINUWyJUPPkm9xzZ-U.7XlzCC5R_HioIi5HVE05_niUq8FXCKXthX3w7467Weo&scope=&state=test_state
+    
+      const urlParams = new URLSearchParams(queryString);
+
+      const request_token = urlParams.get('code');
+
+      var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      if (isMobile) {
+        window.location = "https://unkoti.com/mob/#/chart/aliceblue/"+request_token;
+      }
+      else{
+        window.location = "https://unkoti.com/desk/#/chart/aliceblue/"+request_token;
+      }
+      
+      // window.location = "http://localhost:4200/#/chart/zerodha/"+request_token;
+      
+  } 
+
+</script>
+
+</body>
+
+</html>
